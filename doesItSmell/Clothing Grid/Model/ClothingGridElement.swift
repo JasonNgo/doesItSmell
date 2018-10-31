@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-struct ClothingType {
+struct ClothingGridElement {
+    
     var name: String
     var image: UIImage?
     
@@ -17,4 +18,5 @@ struct ClothingType {
         self.name = name
         self.image = image
     }
-}
+    
+} // ClothingGridElement

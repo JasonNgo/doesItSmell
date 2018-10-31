@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController {
     
     func setupTabBarViewControllers() {
         let flowLayout = UICollectionViewFlowLayout()
-        let clothingTypeViewController = ClothingTypeCollectionView(collectionViewLayout: flowLayout)
+        let clothingTypeViewController = ClothingGridCollectionView(collectionViewLayout: flowLayout)
         clothingTypeViewController.navigationItem.title = "Clothing Types"
         
         let clothingNavController = UINavigationController(rootViewController: clothingTypeViewController)

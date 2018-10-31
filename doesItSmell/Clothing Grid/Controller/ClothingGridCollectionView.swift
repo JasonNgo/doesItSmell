@@ -9,26 +9,35 @@
 import Foundation
 import UIKit
 
-class ClothingTypeCollectionView: UICollectionViewController {
+class ClothingGridCollectionView: UICollectionViewController {
     
-    let dataSource = ClothingTypeDataSource()
+    let dataSource = ClothingGridDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupClothingTypeCollectionView()
+        setupClothingGridCollectionView()
     }
     
-    func setupClothingTypeCollectionView() {
+}
+
+// MARK: - Setup
+
+fileprivate extension ClothingGridCollectionView {
+    
+    func setupClothingGridCollectionView() {
+        let clothingGridNib = UINib(nibName: "ClothingGridCell", bundle: nil)
+        collectionView.register(clothingGridNib, forCellWithReuseIdentifier: ClothingGridDataSource.cellId)
         collectionView.backgroundColor = .white
-        let nib = UINib(nibName: "ClothingTypeCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: ClothingTypeDataSource.cellId)
         collectionView.dataSource = dataSource
         collectionView.delegate = self
     }
+    
 }
 
-extension ClothingTypeCollectionView: UICollectionViewDelegateFlowLayout {
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension ClothingGridCollectionView: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (view.frame.size.width - (3 * 16)) / 2
         return CGSize(width: size, height: size)
@@ -41,6 +50,7 @@ extension ClothingTypeCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
+    
 }
 
 
